@@ -1,0 +1,33 @@
+<section style="display: flex; justify-content: space-between">
+  <h1 style="margin-left: 30px">Movies</h1>
+  <div>
+    <div class="example-form">
+      <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Search movie</mat-label>
+        <input matInput [formControl]="searchCtrl" />
+      </mat-form-field>
+    </div>
+  </div>
+</section>
+
+<section class="container">
+  <div *ngFor="let record of searchlist" style="margin: 15px">
+    <mat-card class="example-card">
+      <img
+        *ngIf="record['Poster'] != 'N/A'"
+        mat-card-image
+        [src]="record['Poster']"
+        alt="{{ record['Title'] }}"
+      />
+      <div style="padding: 10px">
+        <mat-card-subtitle *ngIf="record['Poster'] == 'N/A'"
+          >Title : {{ record["Title"] }}</mat-card-subtitle
+        >
+      </div>
+
+      <mat-card-actions>
+        <mat-card-subtitle>Year : {{ record["Year"] }}</mat-card-subtitle>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</section>
